@@ -1,6 +1,10 @@
 -- Enable UUID extension
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
+-- Custom types
+CREATE TYPE user_role AS ENUM ('setter', 'executor');
+CREATE TYPE task_status AS ENUM ('new', 'in_progress', 'on_review', 'accepted', 'rework');
+
 -- Profiles table (extends auth.users)
 CREATE TABLE profiles (
   id UUID REFERENCES auth.users(id) ON DELETE CASCADE PRIMARY KEY,
@@ -61,7 +65,7 @@ BEGIN
   NEW.updated_at = NOW();
   RETURN NEW;
 END;
-$$ language 'plpgsql';
+$$ LANGUAGE plpgsql;
 
 -- Apply updated_at triggers
 CREATE TRIGGER update_profiles_updated_at BEFORE UPDATE ON profiles
