@@ -86,12 +86,6 @@ export function LoginPage() {
               {loading ? 'Вход...' : 'Войти'}
             </Button>
           </form>
-          <div className="mt-6 text-center text-sm text-gray-500">
-            <p>Тестовые аккаунты:</p>
-            <p className="mt-1 font-mono text-xs">setter@test.com / password123</p>
-            <p className="font-mono text-xs">executor1@test.com / password123</p>
-            <p className="font-mono text-xs">executor2@test.com / password123</p>
-          </div>
         </CardContent>
       </Card>
     </div>
